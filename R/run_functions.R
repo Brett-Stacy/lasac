@@ -10,7 +10,7 @@
 #'
 #' Further details go here
 #'
-#' @param output
+#' @param output some output
 #' @export
 myplot = function(output){
   plot(output)
