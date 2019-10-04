@@ -11,6 +11,7 @@
 #' Further details go here
 #'
 #' @param output some output
+#' @importFrom graphics plot
 #' @export
 myplot = function(output){
   plot(output)
