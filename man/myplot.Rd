@@ -6,6 +6,9 @@
 \usage{
 myplot(output)
 }
+\arguments{
+\item{output}{some output}
+}
 \description{
 Some plotting function that displays output from an OM/EM run using lasac
 }
