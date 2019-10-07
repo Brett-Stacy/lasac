@@ -1,0 +1,74 @@
+@estimator Bayes
+
+@max_iters 1600
+
+@max_evals 10000
+
+@grad_tol 0.001
+
+@MCMC 
+start 0
+length 1500000
+keep 1000
+stepsize 0.01
+adaptive_stepsize True
+adapt_at 1e+05 2e+05 3e+05 4e+05
+burn_in 500
+
+@ageing_error 
+type normal
+c 0
+
+@q_method nuisance
+
+@profile 
+parameter initialization.B0
+n 11
+l 40000
+u 130000
+
+# Enter in simulated observations here
+
+@estimate 
+parameter initialization.B0
+lower_bound 5000
+upper_bound 5e+05
+prior uniform
+
+@catch_limit_penalty 
+label LL_Penalty
+fishery LL
+log_scale True
+multiplier 1000
+
+@fish_tagged_penalty 
+label Penalty_Tags2005_R1_LL
+tagging_episode Tags2005_R1_LL
+multiplier 1
+
+@fish_tagged_penalty 
+label Penalty_Tags2006_R1_LL
+tagging_episode Tags2006_R1_LL
+multiplier 1
+
+@fish_tagged_penalty 
+label Penalty_Tags2007_R1_LL
+tagging_episode Tags2007_R1_LL
+multiplier 1
+
+@fish_tagged_penalty 
+label Penalty_Tags2008_R1_LL
+tagging_episode Tags2008_R1_LL
+multiplier 1
+
+@fish_tagged_penalty 
+label Penalty_Tags2009_R1_LL
+tagging_episode Tags2009_R1_LL
+multiplier 1
+
+@vector_average_penalty 
+label meanYCS_1
+vector recruitment.YCS
+k 1
+multiplier 100
+
