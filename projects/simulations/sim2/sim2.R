@@ -76,7 +76,7 @@ nsim = 50
 out = list()
 out$True = casal::extract.quantities("TRoutput.log", path=casal_path)$SSBs
 out$Est  = list(SSB = matrix(NA, ncol = length(out$True$SSB), nrow = nsim), year = out$True$year)
-casalest_skel = casal::extract.csl.file(paste0(casal_path,"casal_estimation_skel.csl"))
+casalest_skel = casal::extract.csl.file(paste0(casal_path,"EMestimation_skel.csl"))
 
 
 
@@ -108,12 +108,8 @@ plot(out$True$year, out$True$SSB, col = "blue")
 for (i in 1:nsim) {
   lines(out$Est$year, out$Est$SSB[i,])
 }
-points(out$True$year, out$True$SSB, col = "blue", pch = 19)
 
 
 
-## Introduce some illegal fishing ----
-casal_path = paste0(house, "/projects/simulations/sim1/")
-setwd(casal_path)
 
 

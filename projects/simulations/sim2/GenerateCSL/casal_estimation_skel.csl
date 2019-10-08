@@ -1,0 +1,266 @@
+#############################################################################
+#   Dissostichus eleginoides 
+#
+#############################################################################
+#
+#   Enter Trial Details Here
+#
+#############################################################################
+#
+#   Estimation File
+#
+#   See Population File for details of trial
+#
+#############################################################################
+
+
+# Test change
+
+
+# ESTIMATION
+@estimator Bayes
+@max_iters 1600
+@max_evals 10000
+@grad_tol 0.0002
+
+@MCMC
+start 0
+length 1500000
+keep 1000
+stepsize 0.01
+adaptive_stepsize true
+adapt_at 100000 200000 300000 400000
+burn_in 500
+
+# ESTIMATION PROFILING
+@profile
+parameter initialization.B0
+n      11
+l  120000
+u  160000
+
+
+
+# OBSERVATIONS
+@relative_abundance f1_cpue 	# Define a relative abundance series 
+biomass True    				# This time series is an abundance index of biomass
+q q_f1_cpue     				# Catchability
+area 1
+ogive Sel_f1  					# Selectivity 
+step 2          				# Occurs in time step
+proportion_mortality 0.5 		# Proportion of mortality in that time step after which observation occurs
+years 2001 2002 2003 2004 2005 	# Years
+2001 103.95					# Annual observation
+cv_2001  0.3471				# Robust estimate of CV
+dist lognormal					# Lognormal distribution
+cv_process_error 0.0
+
+
+## SURVEY AGE COMPOSITION
+## Relative (or absolute if q=1) age composition in surveys
+@relative_numbers_at Survey1_Age
+q q_Survey1Age
+area 1
+ogive Sel_Survey1Age
+step 2
+proportion_mortality 0.5
+years 2004 2005
+at_size False
+sexed False
+plus_group True
+min_class 1
+max_class 16
+# All1 All2 ... All16; if sexed: M1 M2 ... M16  F1 F2 ... F16
+2004 380512 579914 1193265 2012204 1957859 1441474 1251509 720411 675715 491210 319403 278246 179194 152885 86669 139633
+2005 164223 956841 2194956 2313062 2075797 1821290 1362268 1237848 672995 793681 353295 245421 198138 148636 65013 215140
+cvs_2004 0.1718 0.1502 0.1255 0.1146 0.115 0.121 0.1243 0.1413 0.1438 0.158 0.1826 0.1921 0.2284 0.244 0.313 0.2536
+cvs_2005 0.4596 0.331 0.3125 0.3118 0.3133 0.3155 0.3214 0.3237 0.3441 0.3375 0.3815 0.4131 0.4361 0.4734 0.6313 0.4268
+dist lognormal
+cv_process_error 0.0
+
+## SURVEY SIZE COMPOSITION
+## Relative (or absolute if q=1) size composition in surveys
+@relative_numbers_at Survey2_Size
+q q_Survey2Size
+area 1
+ogive Sel_Survey2Size
+step 2
+proportion_mortality 0.5
+years 2006 2007
+at_size True
+sexed False
+plus_group False
+class_mins   300        350         400         450         500         550         600         650         700         750         800         850         900         950         1000        1050        1100
+# All300 All350 ... All11100; if sexed: M300 M350 ... M1100  F300 F350 ... F1100
+2006         1.0   		484932.2    2381086.0   4059902.0   3575354.0   3209194.0   2160879.0   1025995.0    524712.7   252646.0     131790.2   182933.1    137658.1    25561.32    42764.92    40841.01
+2007         58985.88   215034.7    955586.6    3593357.0   4989314.0   3416360.0   2101375.0   1173626.0    971471.5   495449.0     193945.8   117942.8     57235.2    77861.15    22684.19    12863.28
+cvs_2006     1.0        1.0         0.7430729   0.3987331   0.34894     0.3862327   0.2884875   0.1491272   0.1256172   0.1261333   0.2068912   0.4834898   0.3294543   0.09343055  1.039750    0.5041884
+cvs_2007     1.0        0.9232926   0.6847217   0.6075864   0.3211587   0.1819662   0.1943345   0.2014713   0.3308603   0.1899794   0.1302757   0.1768314   0.1593956   0.9029224   0.1609416   0.4357159
+dist lognormal
+cv_process_error 0.0
+
+
+
+## COMMERCIAL CATCH AGE COMPOSITION
+## Relative age composition in commercial catch (fishery defined elsewhere, thus no area, selectivity, catchability etc)
+@catch_at Catch_f1Age
+fishery f1Age
+years 2001 2002
+at_size False
+sexed False
+sum_to_one False
+plus_group True
+min_class 1
+max_class 26
+# All1 All2 ... All26; if sexed: M1 M2 ... M26  F1 F2 ... F26
+2001 0 3.5e-05 0.003328 0.024805 0.086457 0.185733 0.146721 0.169162 0.115401 0.076362 0.043676 0.035349 0.025991 0.030302 0.013445 0.011327 0.008139 0.006887 0.003801 0.003905 0.003724 0.002364 0.001746 0.000981 0 0.000359
+2002 0 3.9e-05 0.001084 0.031148 0.141076 0.121984 0.209205 0.182596 0.123782 0.072436 0.040114 0.029161 0.01668 0.008836 0.007146 0.004417 0.003092 0.00222 0.002141 0.000312 0.00061 9.5e-05 0.000683 0.000121 0 0.001022
+dist multinomial
+N_2001 1656   
+N_2002 333  
+r 1e-11
+# r is robustifying constant
+
+
+## Relative size composition in commercial catch (no catchability q)
+@catch_at Catch_f1Size
+fishery f1Size
+years 1988 1989
+at_size True
+sexed False
+sum_to_one True
+plus_group False
+class_mins   300        350         400         450         500         550         600         650         700         750         800         850         900         950         1000        1050        1100
+1988         1.0   		484932.2    2381086.0   4059902.0   3575354.0   3209194.0   2160879.0   1025995.0    524712.7   252646.0     131790.2   182933.1    137658.1    25561.32    42764.92    40841.01
+1989         58985.88  	215034.7    955586.6    3593357.0   4989314.0   3416360.0   2101375.0   1173626.0    971471.5   495449.0     193945.8   117942.8     57235.2    77861.15    22684.19    12863.28
+dist multinomial
+N_1988 19
+N_1989 69
+r 1e-11
+# r is robustifying constant
+
+
+{
+@tag_recapture 2004Tags
+tag_name 2004Tags
+area 1
+years 2006 2007 2008 2009
+step 2
+ogive
+sample size
+detection_probability 1
+proportion_mortality 1.0
+plus_group True
+class_mins      600    700     800     900     1000   1100
+recaptured_2006	3      59      53      14      2      0
+recaptured_2007	8      40      51      14      1      1
+recaptured_2008	1      32      53      18      6      0
+recaptured_2009	0      19      21      10      2      0
+scanned_2006	30601  117407  177327  118918  45063  17429
+scanned_2007	33523  124991  164440  126437  49307  18888
+scanned_2008	40803  151223  164730  116318  57558  25911
+scanned_2009	46654  165780  143530  91469   42976  18398
+do_bootstrap True
+r 1e-11
+dispersion 2
+}
+
+
+# AGEING ERROR
+@ageing_error
+type normal
+c 0.1				# cv of misclassification
+#type misclassification_matrix
+#1 0.55439724 0.409991 0.02989678 0.00476449 0.0004566 0.00049389 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#2 0.2083467 0.54409785 0.2083467 0.03267159 0.00538769 0.00055708 0.00059238 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+#3 0.01783016 0.2115553 0.53376061 0.2115553 0.01783016 0.00608098 0.00067836 0.00070913 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+# etc.
+
+
+# RELATIVITY CONSTANTS
+@q_method nuisance
+
+# ESTIMATES
+@estimate
+parameter q[q_Survey1Size].q
+#same q[q_Survey1Age].q
+lower_bound 1e-6
+upper_bound 1000
+#lower_bound 1			# for absolute estimates
+#upper_bound 1			# for absolute estimates
+prior uniform
+#prior lognormal
+#mu 1.0					# Mean for normal or lognormal 
+#cv 1.0					# CV for normal or lognormal
+#MCMC_fixed false		# false is default
+
+{
+@estimate
+parameter relative_abundance[f1cpue].cv_process_error
+lower_bound 0.001
+upper_bound 5
+prior uniform
+phase 1
+MCMC_fixed true
+
+
+#FREE PARAMETERS
+@estimate
+parameter initialization.B0
+lower_bound 50000
+upper_bound 250000
+prior uniform
+#prior uniform-log
+
+@estimate
+parameter size_at_age.cv
+lower_bound 0.05
+upper_bound 0.15
+prior uniform
+
+@estimate
+parameter natural_mortality.all
+lower_bound 0.1
+upper_bound 0.25
+prior uniform
+
+@estimate
+parameter recruitment.YCS
+#YCS_years  1981 1982  1983  1984  1985  1986  1987  1988  1989  1990  1991  1992  1993  1994  1995  1996  1997  1998  1999  2000  2001  2002  2003  2004  2005  2006  2007
+lower_bound 1.00 1.00 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001 0.001  0.001  1.0   1.0
+upper_bound 1.00 1.00   100   100   100   100   100   100   100   100   100   100   100   100   100   100   100   100   100   100   100   100   100   100  100    1.0   1.0
+prior uniform
+#prior lognormal
+#mu             1    1     1     1     1     1     1     1     1     1     1     1     1     1     1     1     1     1     1     1     1     1     1     1     1     1
+#cv           0.925  0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.925   0.9
+
+#estimate survey & fisheries selectivities
+@estimate
+parameter selectivity[Sel_Surv1Age].all
+lower_bound  0.1     0.1   0.02   1.0    1.0
+upper_bound  10.0    20.0  20.0   20.0   1.0
+prior uniform
+}
+
+# PENALTIES
+@catch_limit_penalty
+label Surv1Agepenalty
+fishery Survey1Age
+log_scale true
+multiplier 1000
+
+{
+@fish_tagged_penalty
+label 2004TagPenalty
+tagging_episode 2004Tags
+multiplier 1
+
+@vector_average_penalty
+label meanYCS_1
+vector recruitment.YCS
+k 1
+multiplier 100
+}
+
+
+

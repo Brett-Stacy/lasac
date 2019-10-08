@@ -1,0 +1,9 @@
+process
+
+use earthfish to generate csl files 
+put them in the sim folder
+Copy and rename all csl files with prefix EM
+delete observations in est.csl and rename it _skel
+run casal with the original csl files to get mpd output (true.dat)
+use this mpd output to simulate/estimate
+
