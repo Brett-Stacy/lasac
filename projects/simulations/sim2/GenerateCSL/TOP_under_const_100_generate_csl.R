@@ -217,18 +217,27 @@ para$ass$regions      = "R1"
 para$ass$list_region  = "R1"
 para$ass$match_region = matrix(c(1, "R1"), ncol=1, byrow=TRUE,
                                 dimnames=list(c("OM","Ass"),c()))
-para$ass$list_season  = "1"
+# para$ass$list_season  = "1"
+para$ass$list_season  = c("1", "1")
 
 
 ########## FISHERY
 # name
-para$ass$list_fishery  = "LL"
-para$ass$list_sel      = "SelLL"
-para$ass$Fish          = matrix(c("LL", 1, "R1", "SelLL", "qLL", 1, 100, 100),
-                                 ncol=8, byrow=TRUE,
-                                 dimnames=list(c(),c("Fishery","Season","Region","Sel","q",
-                                            "ProjCatch", "catchage_N", "catchlen_N")))
-para$ass$match_fishery = matrix(c("LL1", "LL"), ncol=1, byrow=TRUE,
+# para$ass$list_fishery  = "LL"
+para$ass$list_fishery = c("LL1", "LL2")
+# para$ass$list_sel      = "SelLL"
+para$ass$list_sel      = c("SelLL", "SelLL")
+# para$ass$Fish          = matrix(c("LL", 1, "R1", "SelLL", "qLL", 1, 100, 100),
+#                                  ncol=8, byrow=TRUE,
+#                                  dimnames=list(c(),c("Fishery","Season","Region","Sel","q",
+#                                             "ProjCatch", "catchage_N", "catchlen_N")))
+para$ass$Fish          = matrix(c("LL1", 1, "R1", "SelLL", "qLL", 1, 100, 100, "LL2", 1, "R1", "SelLL", "qLL", 1, 0, 0),
+                                ncol=8, byrow=TRUE,
+                                dimnames=list(c(),c("Fishery","Season","Region","Sel","q",
+                                                    "ProjCatch", "catchage_N", "catchlen_N")))
+# para$ass$match_fishery = matrix(c("LL1", "LL"), ncol=1, byrow=TRUE,
+#                                 dimnames=list(c("OM","Ass"),c()))
+para$ass$match_fishery = matrix(c("LL1", "LL2", "LL1", "LL2"), ncol=2, byrow=TRUE,
                                  dimnames=list(c("OM","Ass"),c()))
 
 # selectivity
@@ -244,11 +253,18 @@ para$ass$n_migrations               = 0 # when 0, turns off migration from pop a
 
 
 # sampling
-para$ass$sample_years = am_sampling(years = para$om$years,
+# para$ass$sample_years = am_sampling(years = para$om$years,
+#                                     ycurr = para$om$year[2],
+#                                     catchage_yrs = age_years,
+#                                     catchlen_yrs = len_years,
+#                                     tagging_yrs = tag_years)$sample_years
+para$ass$sample_years = am_sampling(fleets = list("LL1", "LL2"),
+                                    years = para$om$years,
                                     ycurr = para$om$year[2],
                                     catchage_yrs = age_years,
                                     catchlen_yrs = len_years,
                                     tagging_yrs = tag_years)$sample_years
+para$ass$sample_years[,,"LL2"] = 0
 
 # output
 para$ass$output$`numbers_at[Numbers_at_age_R2]`       = NULL
@@ -256,11 +272,12 @@ para$ass$output$`numbers_at[Numbers_at_age_R1]`$years = para$ass$years
 
 
 # future catch
-para$ass$future_constant_catches = 200 # what does this specify?
+# para$ass$future_constant_catches = 200 # what does this specify?
+para$ass$future_constant_catches = c(200, 200) # what does this specify?
 
 
 # other
-para$ass$spawning_part_mort = 1 # set CASAL to calculate SSB after 100% F and M
+# para$ass$spawning_part_mort = 1 # set CASAL to calculate SSB after 100% F and M
 
 
 
