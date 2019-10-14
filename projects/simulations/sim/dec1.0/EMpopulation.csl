@@ -1,0 +1,208 @@
+@initialization 
+B0 448262
+
+@size_based False
+
+@min_age 1
+
+@max_age 30
+
+@plus_group True
+
+@sex_partition False
+
+@mature_partition False
+
+@n_areas 1
+
+@area_names R1
+
+@n_stocks 1
+
+@initial 1990
+
+@current 2010
+
+@final 2045
+
+@annual_cycle 
+time_steps 1
+recruitment_time 1
+spawning_time 1
+spawning_part_mort 0.5
+aging_time 1
+growth_props 0
+M_props 1
+baranov False
+fishery_names LL1 LL2
+fishery_times 1 1
+fishery_areas R1
+recruitment_areas R1
+spawning_all_areas 1
+spawning_p 1
+spawning_use_total_B False
+n_migrations 0
+migration_names MoveRec_1_2
+migration_times 1
+migrate_from R1
+migrate_to R2
+
+@y_enter 1
+
+@standardise_YCS True
+
+@recruitment 
+YCS_years 1989 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009
+YCS 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+first_free 1989
+last_free 2006
+year_range 1989 2006
+SR BH
+sigma_r 0.6
+steepness 0.7
+rho 0
+p_male 0.5
+
+@randomisation_method lognormal
+
+@first_random_year 2007
+
+@maturity_props 
+all allvalues  0 0 0 0 0 0 0 0 0 0 0 0.1667 0.3333 0.5 0.6667 0.8333 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+@natural_mortality 
+all 0.155
+
+@size_at_age_type von_Bert
+
+@size_at_age_dist normal
+
+@size_at_age 
+Linf 2870
+k 0.02056
+t0 -4.2897
+cv 0.1
+by_length True
+
+@size_weight 
+a 2.59e-12
+b 3.2064
+verify_size_weight 500 0.5 1.5
+
+@fishery LL1 
+years 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010
+catches 0 6000 6000 6000 6000 6000 6000 6000 6000 6000 6000 6000 6000 6000 6000 6000 6000 6000 6000 6000 6000
+U_max 0.95
+selectivity SelLL
+future_constant_catches 200
+
+@fishery LL2 
+years 1990 1991 1992 1993 1994 1995 1996 1997 1998 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010
+catches 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+U_max 0.95
+selectivity SelLL
+future_constant_catches 200
+
+@selectivity_names SelLL
+
+@selectivity SelLL 
+all double_normal 10 2 10
+
+@n_tags 5
+
+@tag_names Tags2005_R1 Tags2006_R1 Tags2007_R1 Tags2008_R1 Tags2009_R1
+
+@tag_shedding_rate 0.0084 0.0084 0.0084 0.0084 0.0084
+
+@tag_loss_props 1
+
+@tag_growth_loss Tags2005_R1 
+nogrowth_period 0
+
+@tag_growth_loss Tags2006_R1 
+nogrowth_period 0
+
+@tag_growth_loss Tags2007_R1 
+nogrowth_period 0
+
+@tag_growth_loss Tags2008_R1 
+nogrowth_period 0
+
+@tag_growth_loss Tags2009_R1 
+nogrowth_period 0
+
+@tag Tags2005_R1_LL1 
+tag_name Tags2005_R1
+release_type deterministic
+area R1
+sex both
+year 2005
+step 1
+mature_only False
+ogive SelLL
+number 2500
+plus_group False
+class_mins 100 150 200 250 300 350 400 450 500 550 600 650 700 750 800 850 900 950 1000 1050 1100 1150 1200 1250 1300 1350 1400 1450 1500 1550 1600 1650 1700 1750 1800 1850 1900 1950 2000 2050
+props_all 0 0 0 0 0 1e-04 8e-04 0.0048 0.0184 0.0472 0.088 0.1245 0.1388 0.1298 0.1103 0.0896 0.0694 0.0511 0.0362 0.0255 0.0183 0.0135 0.01 0.0073 0.0052 0.0037 0.0025 0.0018 0.0012 8e-04 5e-04 3e-04 2e-04 1e-04 0 0 0 0 0
+mortality 0.1
+
+@tag Tags2006_R1_LL1 
+tag_name Tags2006_R1
+release_type deterministic
+area R1
+sex both
+year 2006
+step 1
+mature_only False
+ogive SelLL
+number 2500
+plus_group False
+class_mins 100 150 200 250 300 350 400 450 500 550 600 650 700 750 800 850 900 950 1000 1050 1100 1150 1200 1250 1300 1350 1400 1450 1500 1550 1600 1650 1700 1750 1800 1850 1900 1950 2000 2050
+props_all 0 0 0 0 0 2e-04 0.0013 0.0058 0.0198 0.0485 0.0873 0.1222 0.1397 0.1351 0.1154 0.0921 0.0705 0.0511 0.0349 0.023 0.0152 0.0104 0.0075 0.0055 0.0041 0.0031 0.0023 0.0017 0.0012 9e-04 6e-04 3e-04 2e-04 1e-04 0 0 0 0 0
+mortality 0.1
+
+@tag Tags2007_R1_LL1 
+tag_name Tags2007_R1
+release_type deterministic
+area R1
+sex both
+year 2007
+step 1
+mature_only False
+ogive SelLL
+number 2500
+plus_group False
+class_mins 100 150 200 250 300 350 400 450 500 550 600 650 700 750 800 850 900 950 1000 1050 1100 1150 1200 1250 1300 1350 1400 1450 1500 1550 1600 1650 1700 1750 1800 1850 1900 1950 2000 2050
+props_all 0 0 0 0 0 1e-04 0.0011 0.0056 0.0193 0.0485 0.0889 0.124 0.139 0.1322 0.1118 0.0878 0.0669 0.0504 0.0372 0.0265 0.0183 0.0125 0.0087 0.0062 0.0045 0.0032 0.0024 0.0017 0.0012 8e-04 5e-04 3e-04 2e-04 1e-04 0 0 0 0 0
+mortality 0.1
+
+@tag Tags2008_R1_LL1 
+tag_name Tags2008_R1
+release_type deterministic
+area R1
+sex both
+year 2008
+step 1
+mature_only False
+ogive SelLL
+number 2500
+plus_group False
+class_mins 100 150 200 250 300 350 400 450 500 550 600 650 700 750 800 850 900 950 1000 1050 1100 1150 1200 1250 1300 1350 1400 1450 1500 1550 1600 1650 1700 1750 1800 1850 1900 1950 2000 2050
+props_all 0 0 0 0 0 1e-04 0.0012 0.0062 0.0205 0.0497 0.0924 0.1328 0.1497 0.1384 0.112 0.0842 0.0614 0.0445 0.0322 0.0228 0.0157 0.0106 0.0073 0.0052 0.0038 0.0029 0.0022 0.0016 0.0011 7e-04 4e-04 3e-04 1e-04 1e-04 0 0 0 0 0
+mortality 0.1
+
+@tag Tags2009_R1_LL1 
+tag_name Tags2009_R1
+release_type deterministic
+area R1
+sex both
+year 2009
+step 1
+mature_only False
+ogive SelLL
+number 2500
+plus_group False
+class_mins 100 150 200 250 300 350 400 450 500 550 600 650 700 750 800 850 900 950 1000 1050 1100 1150 1200 1250 1300 1350 1400 1450 1500 1550 1600 1650 1700 1750 1800 1850 1900 1950 2000 2050
+props_all 0 0 0 0 0 1e-04 0.0012 0.0063 0.0213 0.0502 0.0897 0.1266 0.1435 0.135 0.1117 0.0864 0.065 0.0482 0.0352 0.0253 0.0178 0.0122 0.0082 0.0055 0.0037 0.0025 0.0017 0.0011 7e-04 4e-04 3e-04 1e-04 1e-04 0 0 0 0 0 0
+mortality 0.1
+

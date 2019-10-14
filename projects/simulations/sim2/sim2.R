@@ -166,9 +166,6 @@ ggplot(data = df) +
   geom_hline(aes(yintercept = .5*TRmid[1])) +
   geom_hline(aes(yintercept = .2*TRmid[1])) +
   theme_bw() +
-  theme(legend.position = c(.75, .75),legend.background = element_blank(), legend.box.background = element_rect(colour = "black")) +
-  scale_colour_manual(name = "% TAC Undercatch", values = c("black"="black", "red"="red"), labels = c("5%", "0%")) +
-  guides(color = guide_legend(override.aes = list(shape = c(16, 2), fill = c("black", "red"))))  +
   scale_x_continuous(limits=c(1990,2011),expand=c(0,0),name='Year') +
   scale_y_continuous(limits=c(0,1.1*max(TRupr)),expand=c(0,0),name='Spawning Stock Biomass')
 
