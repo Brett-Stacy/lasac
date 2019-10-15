@@ -1,0 +1,45 @@
+@print # Specifies the outputs that CASAL should generate
+# estimation section
+parameters true
+covariance true
+fits_every_eval false
+objective_every_eval false
+parameters_every_eval false
+parameter_vector_every_eval false
+fits true
+resids true 
+pearson_resids true
+normalised_resids true
+estimation_section true
+
+# population section
+requests false
+initial_state false
+state_annually false
+state_every_step false
+final_state false
+results false
+
+#output section
+yields true
+unused_parameters true
+
+@quantities
+all_free_parameters true
+nuisance_qs true
+B0 true
+R0 true
+SSBs true
+fishing_pressures false
+YCS true
+true_YCS true
+recruitments true
+actual_catches false
+fits true
+normalised_resids true
+tagged_age_distribution True
+
+
+
+@n_projections 1000   
+

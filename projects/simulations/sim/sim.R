@@ -64,6 +64,7 @@ for(j in 1:length(scenario_names)){
   OGcasalpop_skel$`fishery[LL2]`$future_constant_catches   = OGcasalpop_skel$`fishery[LL1]`$future_constant_catches
 
   casal::write.csl.file(OGcasalpop_skel, paste0(sim_path,"casal_population.csl"))
+  casal::write.csl.file(OGcasalpop_skel, paste0(sim_path,"TRpopulation.csl")) # want TRue pop.csl to match casal_pop.csl so we are estimating using the same file as used to simulate observations
 
 
   ## OK now for real ----
@@ -78,7 +79,7 @@ for(j in 1:length(scenario_names)){
 
   # Extract stuff from true output
 
-  nsim = 2
+  nsim = 1000
 
 
   out = list()
