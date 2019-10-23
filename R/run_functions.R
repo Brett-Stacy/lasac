@@ -32,6 +32,7 @@ myplot = function(output){
 #' @param sel_params list in earthfish syntax appropriate for sel_type
 #' @param growth list of VB growth parameters
 #' @param natM natural mortality
+#' @export
 rich_sell = function(ages, lbins, sel_type, sel_params, growth, natM){
     nages <- length(ages)
     nbins <- length(lbins)-1
