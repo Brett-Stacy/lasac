@@ -30,7 +30,7 @@ myplot = function(output){
 #' @param lbins the length bins required
 #' @param sel_type character of type "double_normal" etc. consistent with earthfish syntax
 #' @param sel_params list in earthfish syntax appropriate for sel_type
-#' @param growth list of VB growth parameters
+#' @param growth vector of VB growth parameters (Linf, k, t0, CV)
 #' @param natM natural mortality
 #' @export
 rich_sell = function(ages, lbins, sel_type, sel_params, growth, natM){
@@ -88,6 +88,8 @@ rich_sell = function(ages, lbins, sel_type, sel_params, growth, natM){
     # expected selectivity-at-length calculated RIGHT way
     sell <- rep(NA,nbins)
     for(l in 1:nbins) sell[l] <- sum(sela*pal[,l])
+
+    names(sell) = mulbins
 
     return(sell)
 }
